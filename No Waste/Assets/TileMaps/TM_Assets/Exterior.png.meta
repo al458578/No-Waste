@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: 0c0d5e01f66d56845922d456e723447a
+guid: 7b49656b277a4454183f09e7afdcff3c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4861719198491604664
-    second: Bloques_0
+      213: -3552702312740951106
+    second: Exterior_0
   - first:
-      213: -6719331621996328455
-    second: Bloques_1
+      213: -4328969065639721536
+    second: Exterior_1
+  - first:
+      213: 1030272515682958580
+    second: Exterior_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,7 +106,73 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bloques_0
+      name: Exterior_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebbed50d11442bec0800000000000000
+      internalID: -3552702312740951106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exterior_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c5c3e612996ce3c0800000000000000
+      internalID: -4328969065639721536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exterior_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fc7127f4634c4e00800000000000000
+      internalID: 1030272515682958580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exterior_3
       rect:
         serializedVersion: 2
         x: 48
@@ -116,16 +185,38 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8b6f9cf3adb487340800000000000000
-      internalID: 4861719198491604664
+      spriteID: ee31593d1e8c97b42ba56c9ad92ded09
+      internalID: 1787415928
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloques_1
+      name: Exterior_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c5cf0e6cfe6a15439e9186b82ea6ac1
+      internalID: -128656655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exterior_5
       rect:
         serializedVersion: 2
         x: 0
@@ -138,10 +229,32 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9f90cd68d7320c2a0800000000000000
-      internalID: -6719331621996328455
+      spriteID: ad7f3f1df9b5de745898e904cbba595f
+      internalID: 2061916800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exterior_6
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2110343e1a32114b9ae7118fa1c4d17
+      internalID: 32491652
       vertices: []
       indices: 
       edges: []
@@ -150,7 +263,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e3c399fe8aa038a4bb7625270120bfa7
+    spriteID: 1a2e2aaec4f15a548803210e7c0b357c
     internalID: 0
     vertices: []
     indices: 
@@ -162,8 +275,13 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":48.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Bloques_0: 4861719198491604664
-      Bloques_1: -6719331621996328455
+      Exterior_0: -3552702312740951106
+      Exterior_1: -4328969065639721536
+      Exterior_2: 1030272515682958580
+      Exterior_3: 1787415928
+      Exterior_4: -128656655
+      Exterior_5: 2061916800
+      Exterior_6: 32491652
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
