@@ -1,0 +1,4 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Button text="" name="ResumeButton" style="background-color: rgba(29, 205, 47, 0); position: relative; top: 140px; left: 480px; width: 250px; height: 82px;"/>
+    <ui:Button text="" name="MainButton" style="width: 250px; height: 82px; background-color: rgba(50, 205, 49, 0); top: 270px; left: 480px;"/>
+</ui:UXML>

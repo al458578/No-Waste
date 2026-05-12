@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1271884681376612327}
   - component: {fileID: 8122343777465273959}
   - component: {fileID: 850391186143571294}
+  - component: {fileID: 4273481577334513164}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 1307848897
+  m_SortingLayerID: -1089816225
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
@@ -234,3 +235,16 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4273481577334513164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3864780931020041696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b399d0338cb005e4d80ba66d8fe568dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OrdenObejct
+  offset: 0

@@ -1,0 +1,5 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Button text="" name="PlayButton" enable-rich-text="false" style="width: 248px; height: 78px; background-color: rgba(0, 255, 38, 0); position: absolute; top: 200px; right: 491px;"/>
+    <ui:Button text="" name="SettingsButton" parse-escape-sequences="false" style="top: 302px; right: auto; width: 248px; height: 78px; background-color: rgba(209, 200, 36, 0); left: 482px;"/>
+    <ui:Button text="" name="ExitButton" style="background-color: rgba(180, 32, 159, 0); width: 248px; height: 78px; top: 321px; left: 482px;"/>
+</ui:UXML>

@@ -1,0 +1,4 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Button text="" name="ReplayButton" style="top: 367px; left: 110px; width: 254px; height: 85px; background-color: rgba(58, 182, 49, 0);"/>
+    <ui:Button text="" name="MainButton" style="width: 254px; height: 85px; background-color: rgba(66, 255, 17, 0); top: 277px; left: 868px; right: auto;"/>
+</ui:UXML>

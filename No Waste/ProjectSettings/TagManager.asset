@@ -3,12 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Broken
+  - Kitchen
+  - Bin
+  - Fridge
+  - Obstacle
+  - Enemy
+  - Table
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Obstacles
   - Water
   - UI
   - 
@@ -47,8 +54,8 @@ TagManager:
   - name: Ground
     uniqueID: 2242038197
     locked: 0
-  - name: Player
-    uniqueID: 1307848897
+  - name: Object
+    uniqueID: 3205151071
     locked: 0
   - name: Decoration
     uniqueID: 3529010981
