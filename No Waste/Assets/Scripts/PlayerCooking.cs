@@ -144,12 +144,15 @@ public class PlayerCooking : MonoBehaviour
         {
             animator.SetInteger("Food", 0);
             table.Reset();
+
+            isTable = false;
+            table = null;
         }
     }
 
     private void OnRepair(InputAction.CallbackContext context)
     {
-        if (isRepair && table != null)
+        if (isRepair && table != null && animator.GetInteger("Food") == 0)
         {
             animator.SetTrigger("Repaired");
             table.TableRepair();
