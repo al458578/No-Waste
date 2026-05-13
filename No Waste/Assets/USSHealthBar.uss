@@ -1,0 +1,26 @@
+:root {
+}
+
+.my-progress-bar {
+}
+
+.my-progress-bar .unity-progress-bar__container {
+    height: 30px;
+    min-height: 30px;
+    max-height: 30px;
+}
+
+.my-progress-bar .unity-progress-bar__background {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.my-progress-bar .unity-progress-bar__progress {
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    white-space: normal;
+    font-size: 20px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+}

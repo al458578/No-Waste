@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotController
   target: {fileID: 0}
+  mesa: {fileID: 0}
   speed: 3
   detectionDistance: 2.5
   obstacleLayer:
@@ -211,6 +212,10 @@ MonoBehaviour:
     m_Bits: 8
   rotationSmoothTime: 0.05
   dieEffect: {fileID: 5255971847681277822, guid: 5e64a6fe9a4050647b5dab072e6af68d, type: 3}
+  damageAmount: 5
+  attackCooldown: 2
+  knockbackForce: 5
+  personaje: {fileID: 0}
 --- !u!114 &-2735963608993753503
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class BotController : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    public Transform target;
+    public GameObject mesa;
     [SerializeField] private float speed = 3f;
     private Rigidbody2D rb;
     private float minDistance = 0.5f;
@@ -19,16 +20,70 @@ public class BotController : MonoBehaviour
     private Animator animator;
     private bool isAttacking = false;
     [SerializeField] private GameObject dieEffect;
+    private int objective;
+
+    [Header("Attack Settings")]
+    [SerializeField] private int damageAmount = 5;
+    [SerializeField] private float attackCooldown = 2.0f;
+    private float nextAttackTime;
+    public GameObject personaje;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        objective = Random.Range(1, 8);
+        personaje = GameObject.Find("Player");
     }
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        switch (objective)
+        {
+            case 1:
+                {
+                    mesa = GameObject.Find("MesaDuo");
+                    target = mesa.transform;
+                    break;
+                } 
+            case 2:
+                {
+                    mesa = GameObject.Find("MesaDuo 1");
+                    target = mesa.transform;
+                    break;
+                }
+            case 3:
+                {
+                    mesa = GameObject.Find("MesaTrio");
+                    target = mesa.transform;
+                    break;
+                }
+            case 4:
+                {
+                    mesa = GameObject.Find("MesaTrio (1)");
+                    target = mesa.transform;
+                    break;
+                }
+            case 5:
+                {
+                    mesa = GameObject.Find("MesaCuart");
+                    target = mesa.transform;
+                    break;
+                }
+            case 6:
+                {
+                    mesa = GameObject.Find("MesaCuart (1)");
+                    target = mesa.transform;
+                    break;
+                }
+            default:
+                {
+                    mesa = GameObject.Find("MesaCuart (2)");
+                    target = mesa.transform;
+                    break;
+                }
+
+        }
     }
 
     // Update is called once per frame
@@ -42,6 +97,7 @@ public class BotController : MonoBehaviour
         if (isAttacking)
         {
             rb.linearVelocity = Vector2.zero;
+            if (Time.time >= nextAttackTime) ApplyContinuousDamage();
             return;
         }
         Vector2 dirToTarget = (target.position - transform.position).normalized;
@@ -111,18 +167,47 @@ public class BotController : MonoBehaviour
         return finalDir;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void ApplyContinuousDamage()
+    {
+        PlayerHealth player = personaje.GetComponent<PlayerHealth>();
+        if (player != null) player.TakeDamage(damageAmount);
+        nextAttackTime = Time.time + attackCooldown;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) //Añadir Retroceso
     {
         if (collision.transform == target)
         {
             isAttacking = true;
-            rb.linearVelocity = Vector2.zero;
+            //rb.linearVelocity = Vector2.zero;
             if (animator != null)
                 animator.SetBool("Attacking", true);
             TableController table = collision.gameObject.GetComponent<TableController>();
-            table.TableBreak();
+            if (table != null) table.TableBreak();
         }
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform == target)
+        {
+            isAttacking = false;
+            if (animator != null) animator.SetBool("Attacking", false);
+        }
+    }
+
+    /*private void BotImpulse(Collision2D collision)
+    {
+        PlayerHealth player = personaje.GetComponent<PlayerHealth>();
+        if (player != null) player.TakeDamage(damageAmount);
+
+        Vector2 knockbackDir = (transform.position - collision.transform.position).normalized;
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
+        knockbackTimer = 0.4f;
+
+        nextAttackTime = Time.time + attackCooldown;
+    }*/
 
     public void Die()
     {
