@@ -7,6 +7,9 @@ public class TableController : MonoBehaviour
     private bool isOcuped = false;
     private int random;
     private int typeFood;
+
+    private float elapsedTime = 0f;
+    public int time = 30;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +22,24 @@ public class TableController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isOcuped)
+        {
+            elapsedTime += Time.deltaTime;
+
+            if (elapsedTime >= 1f && time > 0)
+            {
+                time--;
+                elapsedTime = 0f;
+            }
+
+            if (time == 0)
+            {
+                isOcuped = false;
+                gameObject.tag = "Untagged";
+                animator.SetInteger("Custom", 0);
+                time = 30;
+            }
+        }
     }
 
     void FixedUpdate()
@@ -28,6 +48,7 @@ public class TableController : MonoBehaviour
         {
             //Método para aparecer reparado y nuevo número
         }
+
         else if (isOcuped)
         {
             gameObject.tag = "Table";
@@ -61,5 +82,6 @@ public class TableController : MonoBehaviour
         animator.SetInteger("Custom", 0);
         isOcuped = false;
         gameObject.tag = "Untagged";
+        time = 30;
     }
 }

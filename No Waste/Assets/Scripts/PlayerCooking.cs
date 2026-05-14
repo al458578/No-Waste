@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerCooking : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class PlayerCooking : MonoBehaviour
     private bool isTable = false;
 
     private TableController table;
+    private int points = 0;
+    [SerializeField] private UIDocument uiDoc;
+    private Label scoreText;
 
     void Awake()
     {
@@ -30,6 +34,7 @@ public class PlayerCooking : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        scoreText = uiDoc.rootVisualElement.Q<Label>("ScoreLabel");
     }
 
     // Update is called once per frame
@@ -142,6 +147,9 @@ public class PlayerCooking : MonoBehaviour
 
         else if (isTable && animator.GetInteger("Food") > 0 && table.CheckFood(1))
         {
+            points += table.time;
+            scoreText.text = points.ToString();
+
             animator.SetInteger("Food", 0);
             table.Reset();
 

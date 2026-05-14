@@ -3,4 +3,5 @@
     <ui:VisualElement name="Marco" style="flex-grow: 1; align-items: auto; width: 100%; height: 10%; background-color: rgb(57, 59, 57); white-space: normal; position: absolute;"/>
     <ui:ProgressBar value="100" title="" name="HealthBar" class="my-progress-bar" style="position: absolute; width: 300px;"/>
     <ui:Label text="300" name="TimeLabel" style="position: absolute; left: 50%; font-size: 25px; -unity-font-style: bold; -unity-text-outline-color: rgba(255, 255, 255, 0); background-color: rgba(255, 255, 255, 0); -unity-text-outline-width: 0; color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#LegacyRuntime&quot;);"/>
+    <ui:Label text="0" name="ScoreLabel" style="font-size: 25px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-font-definition: url(&quot;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#LegacyRuntime&quot;); position: absolute; left: 85%;"/>
 </ui:UXML>
