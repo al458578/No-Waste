@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class PlayerController : MonoBehaviour
     private bool isEnemy = false;
     private BotController bot;
 
+    private float elapsedTime = 0f;
+    private int time = 300;
+    [SerializeField] private UIDocument uiDoc;
+    private Label timeText;
+
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -36,6 +42,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
+        timeText = uiDoc.rootVisualElement.Q<Label>("TimeLabel");
     }
 
         // Se activa con el componente Player Input (Action: Move)
@@ -70,7 +77,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        elapsedTime += Time.deltaTime;
 
+        if (elapsedTime >= 1f && time > 0)
+        {
+            time--;
+            elapsedTime = 0f;
+        }
+        timeText.text = time.ToString();
     }
 
     private void OnEnable()
@@ -108,7 +122,7 @@ public class PlayerController : MonoBehaviour
     private void OnFightPerformed(InputAction.CallbackContext context)
     {
         animator.SetBool("Fight", true);
-        if (isEnemy && bot != null)
+        if (isEnemy && bot != null && animator.GetInteger("Food") == 0)
         {
             bot.Die();
         }
