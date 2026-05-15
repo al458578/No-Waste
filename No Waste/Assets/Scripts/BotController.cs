@@ -196,19 +196,6 @@ public class BotController : MonoBehaviour
         }
     }
 
-    /*private void BotImpulse(Collision2D collision)
-    {
-        PlayerHealth player = personaje.GetComponent<PlayerHealth>();
-        if (player != null) player.TakeDamage(damageAmount);
-
-        Vector2 knockbackDir = (transform.position - collision.transform.position).normalized;
-        rb.linearVelocity = Vector2.zero;
-        rb.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
-        knockbackTimer = 0.4f;
-
-        nextAttackTime = Time.time + attackCooldown;
-    }*/
-
     public void Die()
     {
         Destroy(gameObject);
