@@ -11,6 +11,12 @@ public class PauseGameManager : MonoBehaviour
     public GameObject mainCamera;
     private bool isPaused = false;
 
+    [SerializeField] private UIDocument uiDoc;
+    private VisualElement marco;
+    private Label scoreText;
+    private Label timeText;
+    private ProgressBar healthBar;
+
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -19,7 +25,10 @@ public class PauseGameManager : MonoBehaviour
 
     void Start()
     {
-
+        marco = uiDoc.rootVisualElement.Q<VisualElement>("Marco");
+        scoreText = uiDoc.rootVisualElement.Q<Label>("ScoreLabel");
+        timeText = uiDoc.rootVisualElement.Q<Label>("TimeLabel");
+        healthBar = uiDoc.rootVisualElement.Q<ProgressBar>("HealthBar");
     }
 
     // Update is called once per frame
@@ -52,12 +61,20 @@ public class PauseGameManager : MonoBehaviour
             SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
             camara.SetActive(false);
             mainCamera.SetActive(false);
+            marco.style.display = DisplayStyle.None;
+            scoreText.style.display = DisplayStyle.None;
+            timeText.style.display = DisplayStyle.None;
+            healthBar.style.display = DisplayStyle.None;
         }
         else
         {
             SceneManager.UnloadSceneAsync("PauseMenu");
             camara.SetActive(true);
             mainCamera.SetActive(true);
+            marco.style.display = DisplayStyle.Flex;
+            scoreText.style.display = DisplayStyle.Flex;
+            timeText.style.display = DisplayStyle.Flex;
+            healthBar.style.display = DisplayStyle.Flex;
         }    
     }
 }

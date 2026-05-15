@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerController : MonoBehaviour
@@ -20,12 +21,14 @@ public class PlayerController : MonoBehaviour
 
     private PlayerInput playerInput;
     private InputAction attackAction;
+    private GameObject player;
+    private PlayerCooking playerScore;
 
     private bool isEnemy = false;
     private BotController bot;
 
     private float elapsedTime = 0f;
-    private int time = 300;
+    private int time = 180;
     [SerializeField] private UIDocument uiDoc;
     private Label timeText;
 
@@ -44,6 +47,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         timeText = uiDoc.rootVisualElement.Q<Label>("TimeLabel");
+        player = GameObject.Find("Player");
+        playerScore = player.GetComponent<PlayerCooking>();
     }
 
         // Se activa con el componente Player Input (Action: Move)
@@ -86,6 +91,11 @@ public class PlayerController : MonoBehaviour
             elapsedTime = 0f;
         }
         timeText.text = time.ToString();
+
+        if (time <= 0 && playerScore.points <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     private void OnEnable()

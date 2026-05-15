@@ -19,7 +19,7 @@ public class PlayerCooking : MonoBehaviour
     private bool isTable = false;
 
     private TableController table;
-    private int points = 0;
+    public int points = 0;
     [SerializeField] private UIDocument uiDoc;
     private Label scoreText;
 
@@ -138,6 +138,8 @@ public class PlayerCooking : MonoBehaviour
         if (isBin && animator.GetInteger("Food") > 0)
         {
             animator.SetInteger("Food", 0);
+            points -= 60;
+            ShowScore();
         }
 
         else if (isFridge && animator.GetInteger("Food") > 0)
@@ -147,8 +149,8 @@ public class PlayerCooking : MonoBehaviour
 
         else if (isTable && animator.GetInteger("Food") > 0 && table.CheckFood(1))
         {
-            points += table.time;
-            scoreText.text = points.ToString();
+            points += (table.time * 2);
+            ShowScore();
 
             animator.SetInteger("Food", 0);
             table.Reset();
@@ -167,5 +169,10 @@ public class PlayerCooking : MonoBehaviour
 
             isRepair = false;
         }
+    }
+
+    public void ShowScore()
+    {
+        scoreText.text = points.ToString();
     }
 }

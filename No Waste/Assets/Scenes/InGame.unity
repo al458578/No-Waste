@@ -2193,6 +2193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PauseGameManager
   camara: {fileID: 817663851}
   mainCamera: {fileID: 519420028}
+  uiDoc: {fileID: 371742743}
 --- !u!1 &371742742
 GameObject:
   m_ObjectHideFlags: 0
@@ -6911,6 +6912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d771f2ade4daa4eafbaaa2ab4b5df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCooking
+  points: 0
   uiDoc: {fileID: 371742743}
 --- !u!114 &1719946698
 MonoBehaviour:
@@ -26082,7 +26084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1910142953
 Transform:
   m_ObjectHideFlags: 0
