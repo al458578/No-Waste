@@ -8,13 +8,26 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private UIDocument uiDoc;
     private Button replayBtn;
     private Button mainBtn;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Label finalScore;
+
+    private GameObject player;
+    private PlayerCooking score;
+
+    void Awake()
     {
+        player = GameObject.Find("Player");
+        finalScore = uiDoc.rootVisualElement.Q<Label>("FinalScore");
         replayBtn = uiDoc.rootVisualElement.Q<Button>("ReplayButton");
         mainBtn = uiDoc.rootVisualElement.Q<Button>("MainButton");
+    }
+
+    void Start()
+    {
         replayBtn.clicked += ReplayGame;
         mainBtn.clicked += MainGame;
+        score = player.GetComponent<PlayerCooking>();
+        finalScore.text = score.points.ToString();
+        player.SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,6 +38,7 @@ public class ScoreManager : MonoBehaviour
 
     public void ReplayGame()
     {
+        Destroy(player);
         SceneManager.LoadScene("InGame");
     }
 

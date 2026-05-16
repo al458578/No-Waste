@@ -34,12 +34,15 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        time = 180;
         playerInput = GetComponent<PlayerInput>();
         attackAction = playerInput.actions.FindAction("Attack");
+        player = GameObject.Find("Player");
     }
 
     void Start()
     {
+        time = 180;
         // Guardamos la escala que le pusiste en el Inspector al empezar
         initialScaleX = transform.localScale.x;
 
@@ -47,7 +50,6 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         timeText = uiDoc.rootVisualElement.Q<Label>("TimeLabel");
-        player = GameObject.Find("Player");
         playerScore = player.GetComponent<PlayerCooking>();
     }
 
@@ -95,6 +97,12 @@ public class PlayerController : MonoBehaviour
         if (time <= 0 && playerScore.points <= 0)
         {
             SceneManager.LoadScene("GameOver");
+        }
+
+        else if (time <= 0)
+        {
+            DontDestroyOnLoad(player);
+            SceneManager.LoadScene("ScoreMenu");
         }
     }
 

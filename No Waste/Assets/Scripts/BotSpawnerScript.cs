@@ -13,7 +13,7 @@ public class BotSpawnerScript : MonoBehaviour
 
     private float elapsedTime = 0f;
     public int timeCooldown;
-    public int duration = 12;
+    public int duration = 8;
     private bool isRaid = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -59,7 +59,7 @@ public class BotSpawnerScript : MonoBehaviour
             else if (timeCooldown == 0)
             {
                 isRaid = true;
-                duration = 12;
+                duration = 8;
             }
         }
     }

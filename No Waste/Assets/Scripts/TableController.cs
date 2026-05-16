@@ -31,7 +31,7 @@ public class TableController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isOcuped)
+        if (isOcuped && gameObject.tag == "Table")
         {
             elapsedTime += Time.deltaTime;
 
@@ -48,7 +48,7 @@ public class TableController : MonoBehaviour
                 playerScore.ShowScore();
             }
         }
-        else if (isOcuped == false)
+        else if (isOcuped == false && gameObject.tag == "Untagged")
         {
             elapsedTime += Time.deltaTime;
             if (elapsedTime >= 1f && timeCooldown > 0)

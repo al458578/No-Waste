@@ -26118,7 +26118,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 0}
   spawnRate: 2
   timeCooldown: 0
-  duration: 12
+  duration: 8
 --- !u!1001 &1983639650
 PrefabInstance:
   m_ObjectHideFlags: 0
