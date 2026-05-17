@@ -13,6 +13,8 @@ public class PauseGameManager : MonoBehaviour
 
     [SerializeField] private UIDocument uiDoc;
     private VisualElement marco;
+    private VisualElement timer;
+    private VisualElement points;
     private Label scoreText;
     private Label timeText;
     private ProgressBar healthBar;
@@ -29,7 +31,10 @@ public class PauseGameManager : MonoBehaviour
         scoreText = uiDoc.rootVisualElement.Q<Label>("ScoreLabel");
         timeText = uiDoc.rootVisualElement.Q<Label>("TimeLabel");
         healthBar = uiDoc.rootVisualElement.Q<ProgressBar>("HealthBar");
+        timer = uiDoc.rootVisualElement.Q<VisualElement>("VisualTime");
+        points = uiDoc.rootVisualElement.Q<VisualElement>("VisualPoints");
     }
+
 
     // Update is called once per frame
     void Update()
@@ -65,7 +70,10 @@ public class PauseGameManager : MonoBehaviour
             scoreText.style.display = DisplayStyle.None;
             timeText.style.display = DisplayStyle.None;
             healthBar.style.display = DisplayStyle.None;
+            timer.style.display = DisplayStyle.None;
+            points.style.display = DisplayStyle.None;
         }
+
         else
         {
             SceneManager.UnloadSceneAsync("PauseMenu");
@@ -75,6 +83,8 @@ public class PauseGameManager : MonoBehaviour
             scoreText.style.display = DisplayStyle.Flex;
             timeText.style.display = DisplayStyle.Flex;
             healthBar.style.display = DisplayStyle.Flex;
-        }    
+            timer.style.display = DisplayStyle.Flex;
+            points.style.display = DisplayStyle.Flex;
+        }  
     }
 }
