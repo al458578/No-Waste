@@ -37,7 +37,12 @@ public class PlayerHealth : MonoBehaviour
         if (stats.currentHealth <= 0)
         {
             stats.currentHealth = 0;
-            //Pasar a la escena de Game Over
         }
+    }
+
+    public void TakeHealth(int amount)
+    {
+        stats.currentHealth += amount;
+        OnHealthChanged?.Invoke(stats.currentHealth, stats.maxHealth);
     }
 }

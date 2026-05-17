@@ -23,12 +23,15 @@ public class PlayerCooking : MonoBehaviour
     [SerializeField] private UIDocument uiDoc;
     private Label scoreText;
 
+    private GameObject personaje;
+
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         cookAction = playerInput.actions.FindAction("Cook_1");
         interactAction = playerInput.actions.FindAction("Interact");
         repairAction = playerInput.actions.FindAction("Repair");
+        personaje = GameObject.Find("Player");
     }
 
     void Start()
@@ -164,6 +167,8 @@ public class PlayerCooking : MonoBehaviour
     {
         if (isRepair && table != null && animator.GetInteger("Food") == 0)
         {
+            PlayerHealth player = personaje.GetComponent<PlayerHealth>();
+            player.TakeHealth(5);
             animator.SetTrigger("Repaired");
             table.TableRepair();
 
