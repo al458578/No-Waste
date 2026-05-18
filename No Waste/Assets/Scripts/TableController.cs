@@ -17,7 +17,7 @@ public class TableController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        timeCooldown = UnityEngine.Random.Range(5, 16);
+        timeCooldown = UnityEngine.Random.Range(10, 21);
         typeFood = 1;
         player = GameObject.Find("Player");
         playerScore = player.GetComponent<PlayerCooking>();
@@ -44,7 +44,7 @@ public class TableController : MonoBehaviour
             if (time == 0)
             {
                 Reset();
-                playerScore.points -= 20;
+                playerScore.points -= 10;
                 playerScore.ShowScore();
             }
         }
@@ -78,7 +78,7 @@ public class TableController : MonoBehaviour
         gameObject.tag = "Untagged";
         animator.SetBool("Broken", false);
         time = 30;
-        timeCooldown = UnityEngine.Random.Range(5, 16);
+        timeCooldown = UnityEngine.Random.Range(10, 21);
         random = UnityEngine.Random.Range(1, 11);
     }
 
@@ -93,7 +93,7 @@ public class TableController : MonoBehaviour
         animator.SetInteger("Custom", 0);
         gameObject.tag = "Untagged";
         elapsedTime = 0f;
-        timeCooldown = UnityEngine.Random.Range(5, 16);
+        timeCooldown = UnityEngine.Random.Range(10, 21);
     }
     public void OnOcuped()
     {
