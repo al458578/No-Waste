@@ -10,9 +10,11 @@ public class OverMenuManager : MonoBehaviour
     private Button mainBtn;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    {//Asignar UIElements a sus variables
         replayBtn = uiDoc.rootVisualElement.Q<Button>("ReplayButton");
         mainBtn = uiDoc.rootVisualElement.Q<Button>("MainButton");
+
+        //Asignar cambio de escena según la función del botón
         replayBtn.clicked += ReplayGame;
         mainBtn.clicked += MainGame;
     }

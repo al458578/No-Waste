@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class BotSpawnerScript : MonoBehaviour
 {
+    //Variables de los posibles tipos de enemigos
     [SerializeField] private GameObject enemyPrefab_1;
     [SerializeField] private GameObject enemyPrefab_2;
     [SerializeField] private GameObject enemyPrefab_3;
     [SerializeField] private GameObject enemyPrefab;
 
+    //Variables tiempo de spawn
     [SerializeField] private float spawnRate = 2.0f;
     private float nextSpawnTime;
     private int number;
@@ -18,17 +20,17 @@ public class BotSpawnerScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        number = Random.Range(0, 3);
-        timeCooldown = Random.Range(40, 61);
+        number = Random.Range(0, 3); //Selecciona tipo de enemigo al azar
+        timeCooldown = Random.Range(40, 61); //Selecciona tiempo de espera para la proxima oleada
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isRaid)
+        if (isRaid) //Si la oleada está activa
         {
             elapsedTime += Time.deltaTime;
-            if (elapsedTime >= 1f && duration > 0)
+            if (elapsedTime >= 1f && duration > 0) //Spawnear enemigos hasta que se agote el tiempo de duración
             {
                 duration--;
                 elapsedTime = 0f;
@@ -40,17 +42,17 @@ public class BotSpawnerScript : MonoBehaviour
                 }
 
             }
-            else if (duration == 0)
+            else if (duration == 0) //Una vez termianda, reiniciar tiempo de espera
             {
                 isRaid = false;
                 timeCooldown = Random.Range(40, 61);
             }
         }
 
-        else if (isRaid == false)
+        else if (isRaid == false) //Si está desactivada
         {
             elapsedTime += Time.deltaTime;
-            if (elapsedTime >= 1f && timeCooldown > 0)
+            if (elapsedTime >= 1f && timeCooldown > 0) //Esperar a que se termine el Cooldown
             {
                 timeCooldown--;
                 elapsedTime = 0f;
@@ -64,7 +66,7 @@ public class BotSpawnerScript : MonoBehaviour
         }
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy() //Spawnear un nuevo enemigo de tipo al azar
     {
         number = Random.Range(0, 3);
         switch (number)

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BotController : MonoBehaviour
 {
+    //Variables del objetivo y movimiento
     public Transform target;
     public GameObject mesa;
     [SerializeField] private float speed = 3f;
@@ -17,6 +18,7 @@ public class BotController : MonoBehaviour
     private Vector2 chosenAvoidanceDir;
     private float avoidanceTimer;
 
+    //Variables de estado
     private Animator animator;
     private bool isAttacking = false;
     [SerializeField] private GameObject dieEffect;
@@ -38,7 +40,7 @@ public class BotController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        switch (objective)
+        switch (objective) //Escojer una de las 7 mesas al azar como objetivo
         {
             case 1:
                 {
@@ -94,12 +96,13 @@ public class BotController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isAttacking)
+        if (isAttacking) //Cuando este en ataque se queda fijo golpeando su objetivo
         {
             rb.linearVelocity = Vector2.zero;
             if (Time.time >= nextAttackTime) ApplyContinuousDamage();
             return;
         }
+
         Vector2 dirToTarget = (target.position - transform.position).normalized;
         float distance = Vector2.Distance(transform.position, target.position);
         if (distance > minDistance)
@@ -116,7 +119,7 @@ public class BotController : MonoBehaviour
         }
     }
 
-    private void ControlRotation()
+    private void ControlRotation() //Cambio de sentido
     {
         if (rb.linearVelocity.x > -0.2f && !lookingRight)
             RotateY();
@@ -130,7 +133,7 @@ public class BotController : MonoBehaviour
         transform.Rotate(0, 180, 0);
     }
 
-    private Vector2 CalculateSmartDirection(Vector2 targetDir)
+    private Vector2 CalculateSmartDirection(Vector2 targetDir) //Crear rutas posibles al objetivo
     {
         Vector2 finalDir = targetDir;
         if (avoidanceTimer > 0)
@@ -167,19 +170,19 @@ public class BotController : MonoBehaviour
         return finalDir;
     }
 
-    private void ApplyContinuousDamage()
+    private void ApplyContinuousDamage() //Ocasionar daño constante al atacar
     {
         PlayerHealth player = personaje.GetComponent<PlayerHealth>();
         if (player != null) player.TakeDamage(damageAmount);
         nextAttackTime = Time.time + attackCooldown;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) //Añadir Retroceso
+    private void OnCollisionEnter2D(Collision2D collision) //Una vez colisiona con el objetivo
     {
         if (collision.transform == target)
         {
-            isAttacking = true;
-            //rb.linearVelocity = Vector2.zero;
+            //Cambia al estado de ataque
+            isAttacking = true;;
             if (animator != null)
                 animator.SetBool("Attacking", true);
             TableController table = collision.gameObject.GetComponent<TableController>();
@@ -187,7 +190,7 @@ public class BotController : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision) //Salir de la colisión
     {
         if (collision.transform == target)
         {
@@ -196,7 +199,7 @@ public class BotController : MonoBehaviour
         }
     }
 
-    public void Die()
+    public void Die() //Destruir objeto Bot
     {
         Destroy(gameObject);
         Instantiate(dieEffect, transform.position, transform.rotation);

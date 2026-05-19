@@ -11,7 +11,7 @@ public class PauseMenuManager : MonoBehaviour
     private PauseGameManager pause;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    {//Asignar UIElements a las variables
         mainBtn = uiDoc.rootVisualElement.Q<Button>("MainButton");
         mainBtn.clicked += MainReturn;
         resumeBtn = uiDoc.rootVisualElement.Q<Button>("ResumeButton");
@@ -26,16 +26,16 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     public void ReturnGame()
-    {
+    {//Volver a la Pantalla Game
         if (pause != null)
         {
-            pause.TogglePause();
+            pause.TogglePause(); 
         }
         
     }
 
     public void MainReturn()
-    {
-        SceneManager.LoadScene("MainMenu");
+    {//Ir al Main Menu
+        SceneManager.LoadScene("MainMenu"); 
     }
 }

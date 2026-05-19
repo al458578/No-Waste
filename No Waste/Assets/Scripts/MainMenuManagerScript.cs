@@ -11,10 +11,12 @@ public class MainMenuManagerScript : MonoBehaviour
     private Button exitBtn;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    { //Adjuntar UIElements a sus variables
         playBtn = uiDoc.rootVisualElement.Q<Button>("PlayButton");
         settingsBtn = uiDoc.rootVisualElement.Q<Button>("SettingsButton");
         exitBtn = uiDoc.rootVisualElement.Q<Button>("ExitButton");
+
+        //Cambiar de escena según la función del boton
         playBtn.clicked += PlayGame;
         settingsBtn.clicked += SettingsGame;
         exitBtn.clicked += ExitGame;

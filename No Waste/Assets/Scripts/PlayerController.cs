@@ -13,12 +13,15 @@ public class PlayerController : MonoBehaviour
 
     private float initialScaleX;
 
+    //Componentes
     private Rigidbody2D rb;
     private Animator animator;
     
+    //Ejes
     private float horizontalInput;
     private float verticalInput;
 
+    //InputActions y otros Scripts
     private PlayerInput playerInput;
     private InputAction attackAction;
     private GameObject player;
@@ -27,24 +30,25 @@ public class PlayerController : MonoBehaviour
     private bool isEnemy = false;
     private BotController bot;
 
+    //Tiempo de partida
     private float elapsedTime = 0f;
     private int time = 180;
     [SerializeField] private UIDocument uiDoc;
     private Label timeText;
 
     void Awake()
-    {
+    {//Establecer variables
         time = 180;
         playerInput = GetComponent<PlayerInput>();
-        attackAction = playerInput.actions.FindAction("Attack");
+        attackAction = playerInput.actions.FindAction("Attack"); //Atacar con la tecla: F
         player = GameObject.Find("Player");
     }
 
     void Start()
     {
         time = 180;
-        // Guardamos la escala que le pusiste en el Inspector al empezar
-        initialScaleX = transform.localScale.x;
+
+        initialScaleX = transform.localScale.x; // Guardamos la escala del Inspector al empezar
 
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -59,9 +63,6 @@ public class PlayerController : MonoBehaviour
         Vector2 inputVec = value.Get<Vector2>();
         horizontalInput = inputVec.x;
         verticalInput = inputVec.y;
-
-        // Esto imprimirá los valores en la consola cada vez que presiones WASD
-        //Debug.Log("Movimiento detectado: " + moveInput);
     }
 
     void FixedUpdate()
@@ -92,7 +93,7 @@ public class PlayerController : MonoBehaviour
             time--;
             elapsedTime = 0f;
         }
-        timeText.text = time.ToString();
+        timeText.text = time.ToString(); //Actualizar el tiempo de juego restante
 
         if (time <= 0 && playerScore.points <= 0)
         {
@@ -122,33 +123,33 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy")) //Colisión con Objeto Enemigo
         {
             isEnemy = true;
-            bot = collision.gameObject.GetComponent<BotController>();
+            bot = collision.gameObject.GetComponent<BotController>(); //Guardar objeto en Bot
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy")) //Alejarse del Objeto Enemigo
         {
             isEnemy = false;
-            bot = null;
+            bot = null; //Vaciar variable Bot
         }
     }
 
     private void OnFightPerformed(InputAction.CallbackContext context)
     {
-        animator.SetBool("Fight", true);
-        if (isEnemy && bot != null && animator.GetInteger("Food") == 0)
+        animator.SetBool("Fight", true); //Activar aniamción de ataque
+        if (isEnemy && bot != null && animator.GetInteger("Food") == 0) //Si hay un obejto Bot y el juagdor tiene las manos libres
         {
-            bot.Die();
+            bot.Die(); //Elimianr Objeto Bot
         }
     }
 
     private void OnFightCanceled(InputAction.CallbackContext context)
     {
-        animator.SetBool("Fight", false);
+        animator.SetBool("Fight", false); //Volver a la animación normal
     }
 }

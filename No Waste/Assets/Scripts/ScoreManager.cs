@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour
     private PlayerCooking score;
 
     void Awake()
-    {
+    { //Asignar UIElements a las variables
         player = GameObject.Find("Player");
         finalScore = uiDoc.rootVisualElement.Q<Label>("FinalScore");
         replayBtn = uiDoc.rootVisualElement.Q<Button>("ReplayButton");
@@ -26,8 +26,8 @@ public class ScoreManager : MonoBehaviour
         replayBtn.clicked += ReplayGame;
         mainBtn.clicked += MainGame;
         score = player.GetComponent<PlayerCooking>();
-        finalScore.text = score.points.ToString();
-        player.SetActive(false);
+        finalScore.text = score.points.ToString(); //Estavlecer puntuación final en el Label
+        player.SetActive(false); //Ocultar jugador
     }
 
     // Update is called once per frame
@@ -36,13 +36,13 @@ public class ScoreManager : MonoBehaviour
         
     }
 
-    public void ReplayGame()
+    public void ReplayGame() //Jugar de nuevo el nivel
     {
         Destroy(player);
         SceneManager.LoadScene("InGame");
     }
 
-    public void MainGame()
+    public void MainGame() //Volver al Main Menu
     {
         SceneManager.LoadScene("MainMenu");
     }

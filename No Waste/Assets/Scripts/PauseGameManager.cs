@@ -20,13 +20,13 @@ public class PauseGameManager : MonoBehaviour
     private ProgressBar healthBar;
 
     void Awake()
-    {
+    {//Asignamos InputAction
         playerInput = GetComponent<PlayerInput>();
-        pauseAction = playerInput.actions.FindAction("Pause");
+        pauseAction = playerInput.actions.FindAction("Pause"); //Pausar el juego con la tecla: Esc
     }
 
     void Start()
-    {
+    {//Asignar UIElements a las variables
         marco = uiDoc.rootVisualElement.Q<VisualElement>("Marco");
         scoreText = uiDoc.rootVisualElement.Q<Label>("ScoreLabel");
         timeText = uiDoc.rootVisualElement.Q<Label>("TimeLabel");
@@ -61,9 +61,9 @@ public class PauseGameManager : MonoBehaviour
     {
         isPaused = !isPaused;
         Time.timeScale = isPaused ? 0f : 1f;
-        if (isPaused)
+        if (isPaused) //Ocultar los elementos de la Pantalla Game
         {
-            SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
+            SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive); //Superponer la escena de Pausa
             camara.SetActive(false);
             mainCamera.SetActive(false);
             marco.style.display = DisplayStyle.None;
@@ -75,8 +75,8 @@ public class PauseGameManager : MonoBehaviour
         }
 
         else
-        {
-            SceneManager.UnloadSceneAsync("PauseMenu");
+        { //Activar elementos de la Pantalla Game
+            SceneManager.UnloadSceneAsync("PauseMenu"); //Quitar la escena de Pausa
             camara.SetActive(true);
             mainCamera.SetActive(true);
             marco.style.display = DisplayStyle.Flex;

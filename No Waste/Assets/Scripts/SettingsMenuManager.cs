@@ -9,7 +9,7 @@ public class SettingsMenuManager : MonoBehaviour
     private Button returnBtn;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    { //Asignar UIElements a la variable
         returnBtn = uiDoc.rootVisualElement.Q<Button>("ReturnButton");
         returnBtn.clicked += ReturnGame;
     }
@@ -20,7 +20,7 @@ public class SettingsMenuManager : MonoBehaviour
         
     }
 
-    public void ReturnGame()
+    public void ReturnGame() //Volver al Main Menu
     {
         SceneManager.LoadScene("MainMenu");
     }

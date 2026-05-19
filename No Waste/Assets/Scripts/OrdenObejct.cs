@@ -6,7 +6,7 @@ public class OrdenObejct : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    {//Objtener el componente SpriteRenderer
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -17,7 +17,7 @@ public class OrdenObejct : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
+    {//Modificar estado de layer, según la posición Y del objeto
         spriteRenderer.sortingOrder = (int)(transform.position.y * -100) + offset;
     }
 }

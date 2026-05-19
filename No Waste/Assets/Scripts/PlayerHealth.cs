@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     void Start()
-    {
+    {//Estabkecer vida al máximo
         stats.currentHealth = stats.maxHealth;
         OnHealthChanged?.Invoke(stats.currentHealth, stats.maxHealth);
     }
@@ -23,14 +23,14 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (stats.currentHealth <= 0)
+        if (stats.currentHealth <= 0) //Si la vida se agota = GameOver
         {
             SceneManager.LoadScene("GameOver");
         }
 
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int amount) //Recibir daño
     {
         stats.currentHealth -= amount;
         OnHealthChanged?.Invoke(stats.currentHealth, stats.maxHealth);
@@ -40,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void TakeHealth(int amount)
+    public void TakeHealth(int amount) //Recuperar vida
     {
         stats.currentHealth += amount;
         OnHealthChanged?.Invoke(stats.currentHealth, stats.maxHealth);
